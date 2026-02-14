@@ -120,7 +120,9 @@ function createSiteCard(site, options) {
 
   const visit = document.createElement("span");
   visit.className = "site-visit";
-  visit.textContent = visitData.count > 0 ? formatRelativeTime(visitData.lastVisitedAt) : "UNVISITED";
+  const openCount = Number(visitData.count || 0);
+  visit.textContent = `${openCount} OPEN${openCount === 1 ? "" : "S"}`;
+  visit.title = `Last opened: ${formatRelativeTime(visitData.lastVisitedAt)}`;
 
   tags.append(category, visit);
 

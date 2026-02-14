@@ -53,12 +53,16 @@ function matchesQuery(site, query) {
   return text.includes(normalized);
 }
 
-function sortSites(sites, favorites) {
-  const favScore = (site) => (favorites.has(site.id) ? 1 : 0);
+function sortSites(sites, visits) {
+  const countScore = (site) => {
+    const count = Number(visits[site.id]?.count || 0);
+    return Number.isFinite(count) ? count : 0;
+  };
   const orderScore = (site) => (Number.isFinite(site.order) ? site.order : Number.MAX_SAFE_INTEGER);
+  const byName = (a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
   return [...sites].sort(
-    (a, b) => favScore(b) - favScore(a) || orderScore(a) - orderScore(b)
+    (a, b) => countScore(b) - countScore(a) || orderScore(a) - orderScore(b) || byName(a, b)
   );
 }
 
@@ -121,6 +125,7 @@ async function initializeLauncher() {
       };
 
       writeStorage(STORAGE_KEYS.visits, state.visits);
+      renderCurrent();
     };
 
     const renderCurrent = () => {
@@ -130,7 +135,7 @@ async function initializeLauncher() {
         visible = visible.filter((site) => state.favorites.has(site.id));
       }
 
-      const sorted = sortSites(visible, state.favorites);
+      const sorted = sortSites(visible, state.visits);
       state.lastRendered = sorted;
 
       if (sorted.length === 0) {
@@ -157,7 +162,9 @@ async function initializeLauncher() {
     searchInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && state.lastRendered.length > 0) {
         event.preventDefault();
-        window.open(state.lastRendered[0].url, config.openInNewTabByDefault ? "_blank" : "_self", "noopener");
+        const topSite = state.lastRendered[0];
+        onVisit(topSite.id);
+        window.open(topSite.url, config.openInNewTabByDefault ? "_blank" : "_self", "noopener");
       }
     });
 
