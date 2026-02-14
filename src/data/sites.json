@@ -1,0 +1,424 @@
+{
+  "version": 1,
+  "updatedAt": "2026-02-14",
+  "openInNewTabByDefault": true,
+  "_comment_1": "JSON does not support // comments. Use _comment_* fields for guidance.",
+  "_comment_2": "You can add sites in any order. Default display uses array order when order is not set.",
+  "_comment_3": "Required keys per site: id, name, url, iconUrl. url/iconUrl must be absolute http(s).",
+  "_comment_4": "Optional keys: category, note, keywords(array), order(number). order takes priority over array order.",
+  "_new_site_template": {
+    "id": "example-site",
+    "name": "Example",
+    "url": "https://example.com/",
+    "iconUrl": "https://example.com/icon-square.png",
+    "category": "other",
+    "note": "",
+    "keywords": [
+      "sample",
+      "template"
+    ],
+    "order": 999
+  },
+  "sites": [
+    {
+      "id": "chatgpt-1",
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128",
+      "category": "ai",
+      "note": "General-purpose AI assistant by OpenAI"
+    },
+    {
+      "id": "claude-2",
+      "name": "Claude",
+      "url": "https://claude.ai/new",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=claude.ai&sz=128",
+      "category": "ai",
+      "note": "AI assistant by Anthropic"
+    },
+    {
+      "id": "gemini-3",
+      "name": "Gemini",
+      "url": "https://gemini.google.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128",
+      "category": "ai",
+      "note": "AI assistant by Google"
+    },
+    {
+      "id": "genspark-4",
+      "name": "Genspark",
+      "url": "https://www.genspark.ai/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.genspark.ai&sz=128",
+      "category": "ai",
+      "note": "AI search and research assistant"
+    },
+    {
+      "id": "deepseek-5",
+      "name": "Deepseek",
+      "url": "https://chat.deepseek.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=chat.deepseek.com&sz=128",
+      "category": "ai",
+      "note": "Reasoning-focused AI chat"
+    },
+    {
+      "id": "perplexity-6",
+      "name": "Perplexity",
+      "url": "https://www.perplexity.ai/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.perplexity.ai&sz=128",
+      "category": "ai",
+      "note": "Answer engine with cited sources"
+    },
+    {
+      "id": "midjourney-7",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.midjourney.com&sz=128",
+      "category": "ai",
+      "note": "AI image generation platform"
+    },
+    {
+      "id": "napkin-ai-8",
+      "name": "Napkin AI",
+      "url": "https://app.napkin.ai/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=app.napkin.ai&sz=128",
+      "category": "ai",
+      "note": "Turn text ideas into diagrams"
+    },
+    {
+      "id": "manus-9",
+      "name": "Manus",
+      "url": "https://manus.im/app",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=manus.im&sz=128",
+      "category": "ai",
+      "note": "Autonomous AI agent workspace"
+    },
+    {
+      "id": "notebooklm-10",
+      "name": "NotebookLM",
+      "url": "https://notebooklm.google.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=128",
+      "category": "ai",
+      "note": "AI notebook grounded on your sources"
+    },
+    {
+      "id": "google-labs-11",
+      "name": "Google Labs",
+      "url": "https://labs.google/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=labs.google&sz=128",
+      "category": "ai",
+      "note": "Google experimental products"
+    },
+    {
+      "id": "ai-studio-12",
+      "name": "AI Studio",
+      "url": "https://aistudio.google.com/app/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128",
+      "category": "ai",
+      "note": "Gemini API playground and tools"
+    },
+    {
+      "id": "github-13",
+      "name": "GitHub",
+      "url": "https://github.com/RitaStar1128?tab=repositories",
+      "iconUrl": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png",
+      "category": "dev",
+      "note": "Code hosting and collaboration"
+    },
+    {
+      "id": "codepen-14",
+      "name": "CodePen",
+      "url": "https://codepen.io/pen/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=codepen.io&sz=128",
+      "category": "dev",
+      "note": "Frontend code playground"
+    },
+    {
+      "id": "replit-15",
+      "name": "Replit",
+      "url": "https://replit.com/~",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=replit.com&sz=128",
+      "category": "dev",
+      "note": "Browser-based coding environment"
+    },
+    {
+      "id": "bolt-new-16",
+      "name": "bolt.new",
+      "url": "https://bolt.new/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=bolt.new&sz=128",
+      "category": "dev",
+      "note": "AI-powered app prototyping"
+    },
+    {
+      "id": "supabase-17",
+      "name": "Supabase",
+      "url": "https://supabase.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=supabase.com&sz=128",
+      "category": "dev",
+      "note": "Open source backend platform"
+    },
+    {
+      "id": "vercel-18",
+      "name": "Vercel",
+      "url": "https://vercel.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=vercel.com&sz=128",
+      "category": "dev",
+      "note": "Frontend hosting and deployment"
+    },
+    {
+      "id": "mdn-19",
+      "name": "MDN",
+      "url": "https://developer.mozilla.org/ja/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=developer.mozilla.org&sz=128",
+      "category": "dev",
+      "note": "Web platform documentation"
+    },
+    {
+      "id": "google-fonts-20",
+      "name": "Google Fonts",
+      "url": "https://fonts.google.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=fonts.google.com&sz=128",
+      "category": "dev",
+      "note": "Free web font library"
+    },
+    {
+      "id": "toolbox-21",
+      "name": "Toolbox",
+      "url": "https://www.xn--t8ju21hu42avir.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.xn--t8ju21hu42avir.com&sz=128",
+      "category": "dev",
+      "note": "All-in-one online utility tools"
+    },
+    {
+      "id": "coolors-22",
+      "name": "Coolors",
+      "url": "https://coolors.co/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=coolors.co&sz=128",
+      "category": "dev",
+      "note": "Color palette generator"
+    },
+    {
+      "id": "google-23",
+      "name": "Google",
+      "url": "https://www.google.com/webhp",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.google.com&sz=128",
+      "category": "life",
+      "note": "Web search engine"
+    },
+    {
+      "id": "gmail-24",
+      "name": "Gmail",
+      "url": "https://mail.google.com/mail/u/0/",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/3840px-Gmail_icon_%282020%29.svg.png",
+      "category": "life",
+      "note": "Email service"
+    },
+    {
+      "id": "calendar-25",
+      "name": "Calendar",
+      "url": "https://calendar.google.com/calendar/u/0/r",
+      "iconUrl": "https://fonts.gstatic.com/s/i/productlogos/calendar_2020q4/v13/192px.svg",
+      "category": "life",
+      "note": "Calendar and scheduling"
+    },
+    {
+      "id": "drive-26",
+      "name": "Drive",
+      "url": "https://drive.google.com/drive/",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/3840px-Google_Drive_icon_%282020%29.svg.png",
+      "category": "life",
+      "note": "Cloud file storage"
+    },
+    {
+      "id": "sheets-27",
+      "name": "Sheets",
+      "url": "https://docs.google.com/spreadsheets/u/0/",
+      "iconUrl": "https://cdn-icons-png.flaticon.com/512/281/281761.png",
+      "category": "life",
+      "note": "Online spreadsheet editor"
+    },
+    {
+      "id": "slides-28",
+      "name": "Slides",
+      "url": "https://docs.google.com/presentation/u/0/",
+      "iconUrl": "https://media.flaticon.com/dist/min/img/landing/gsuite/slides.svg",
+      "category": "life",
+      "note": "Online presentation editor"
+    },
+    {
+      "id": "docs-29",
+      "name": "Docs",
+      "url": "https://docs.google.com/document/u/0/",
+      "iconUrl": "https://cdn-icons-png.flaticon.com/512/5968/5968517.png",
+      "category": "life",
+      "note": "Online document editor"
+    },
+    {
+      "id": "maps-30",
+      "name": "Maps",
+      "url": "https://www.google.com/maps/",
+      "iconUrl": "https://img.icons8.com/color/512/google-maps-new.png",
+      "category": "life",
+      "note": "Maps and route planning"
+    },
+    {
+      "id": "photos-31",
+      "name": "Photos",
+      "url": "https://photos.google.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=photos.google.com&sz=128",
+      "category": "life",
+      "note": "Photo backup and organization"
+    },
+    {
+      "id": "youtube-32",
+      "name": "YouTube",
+      "url": "https://www.youtube.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.youtube.com&sz=128",
+      "category": "life",
+      "note": "Video streaming platform"
+    },
+    {
+      "id": "udemy-33",
+      "name": "Udemy",
+      "url": "https://www.udemy.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.udemy.com&sz=128",
+      "category": "learn",
+      "note": "Online course marketplace"
+    },
+    {
+      "id": "deepl-34",
+      "name": "DeepL",
+      "url": "https://www.deepl.com/ja/translator",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.deepl.com&sz=128",
+      "category": "learn",
+      "note": "Machine translation service"
+    },
+    {
+      "id": "nani-35",
+      "name": "Nani!",
+      "url": "https://nani.now/ja",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=nani.now&sz=128",
+      "category": "learn",
+      "note": "Language learning and conversation help"
+    },
+    {
+      "id": "amazon-36",
+      "name": "Amazon",
+      "url": "https://www.amazon.co.jp/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.amazon.co.jp&sz=128",
+      "category": "life",
+      "note": "Online shopping platform"
+    },
+    {
+      "id": "zaim-37",
+      "name": "Zaim",
+      "url": "https://zaim.net/home",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=zaim.net&sz=128",
+      "category": "life",
+      "note": "Personal budget tracker"
+    },
+    {
+      "id": "note-38",
+      "name": "note",
+      "url": "https://note.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=note.com&sz=128",
+      "category": "life",
+      "note": "Blog and article publishing platform"
+    },
+    {
+      "id": "x-39",
+      "name": "X",
+      "url": "https://x.com/",
+      "iconUrl": "https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?semt=ais_wordcount_boost&w=740&q=80",
+      "category": "life",
+      "note": "Real-time social network"
+    },
+    {
+      "id": "instagram-40",
+      "name": "Instagram",
+      "url": "https://www.instagram.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.instagram.com&sz=128",
+      "category": "life",
+      "note": "Photo and video social platform"
+    },
+    {
+      "id": "z-ai-41",
+      "name": "Z.ai",
+      "url": "https://chat.z.ai/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=chat.z.ai&sz=128",
+      "category": "ai",
+      "note": "AI chat service"
+    },
+    {
+      "id": "minimax-agent-42",
+      "name": "MiniMax Agent",
+      "url": "https://agent.minimax.io/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=agent.minimax.io&sz=128",
+      "category": "ai",
+      "note": "AI agent workflow tool"
+    },
+    {
+      "id": "skills-sh-43",
+      "name": "skills.sh",
+      "url": "https://skills.sh/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=skills.sh&sz=128",
+      "category": "dev",
+      "note": "Directory for AI agent skills"
+    },
+    {
+      "id": "roadmap-sh-44",
+      "name": "roadmap.sh",
+      "url": "https://roadmap.sh/full-stack",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=roadmap.sh&sz=128",
+      "category": "learn",
+      "note": "Developer learning roadmaps"
+    },
+    {
+      "id": "freecodecamp-45",
+      "name": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.freecodecamp.org&sz=128",
+      "category": "learn",
+      "note": "Free coding curriculum"
+    },
+    {
+      "id": "fincs-plan-46",
+      "name": "FINCS",
+      "url": "https://fincs.jp/plan/6883693537748780257?tab=content",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=fincs.jp&sz=128",
+      "category": "life",
+      "note": "FINCS plan page"
+    },
+    {
+      "id": "kimi-47",
+      "name": "Kimi",
+      "url": "https://www.kimi.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=www.kimi.com&sz=128",
+      "category": "ai",
+      "note": "AI chat assistant"
+    },
+    {
+      "id": "qwen-chat-48",
+      "name": "Qwen Chat",
+      "url": "https://chat.qwen.ai/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=chat.qwen.ai&sz=128",
+      "category": "ai",
+      "note": "Qwen AI chat interface"
+    },
+    {
+      "id": "grok-49",
+      "name": "Grok",
+      "url": "https://grok.com/",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=grok.com&sz=128",
+      "category": "ai",
+      "note": "xAI conversational assistant"
+    },
+    {
+      "id": "luma-aimokuyokai-50",
+      "name": "Luma Event",
+      "url": "https://luma.com/aimokuyokai",
+      "iconUrl": "https://www.google.com/s2/favicons?domain=luma.com&sz=128",
+      "category": "life",
+      "note": "Event page on Luma"
+    }
+  ]
+}
