@@ -13,25 +13,53 @@
 <body>
   <div class="noise" aria-hidden="true"></div>
 
-  <div class="app-shell">
-    <section class="toolbar" aria-label="quick controls">
-      <label class="search-wrap" for="site-search">
-        <span class="visually-hidden">Search</span>
-        <input id="site-search" type="search" placeholder="検索して Enter で最上位を開く" autocomplete="off">
-      </label>
-
-      <button id="favorites-toggle" class="toggle-button" type="button" aria-pressed="false">
-        FAVORITES ONLY: OFF
-      </button>
-
-      <div class="site-count" id="site-count" aria-live="polite">0 / 0</div>
-    </section>
-
-    <main>
-      <section class="board" aria-live="polite">
-        <div id="link-container" class="site-grid"></div>
+  <div class="layout">
+    <aside class="left-dock">
+      <section class="quick-launch" id="quick-launch" aria-label="frequent shortcuts">
+        <div class="quick-label">TOP OPENED</div>
+        <div class="quick-list" id="quick-list" aria-live="polite"></div>
       </section>
-    </main>
+
+      <section class="help-panel" id="help-panel">
+        <div class="help-title">SHORTCUTS</div>
+        <div class="help-grid">
+          <span>/ or Ctrl/Cmd+K</span><span>focus search</span>
+          <span>Enter</span><span>open top result</span>
+          <span>Alt + 1..9</span><span>open Nth result</span>
+          <span>F</span><span>toggle favorites-only</span>
+          <span>Esc</span><span>clear search</span>
+        </div>
+      </section>
+    </aside>
+
+    <div class="app-shell">
+      <section class="toolbar" aria-label="quick controls">
+        <label class="search-wrap" for="site-search">
+          <span class="visually-hidden">Search</span>
+          <input id="site-search" type="search" placeholder="検索して Enter で最上位を開く" autocomplete="off">
+        </label>
+
+        <button id="search-clear" class="icon-button" type="button" aria-label="検索をクリア">
+          CLEAR
+        </button>
+
+        <button id="favorites-toggle" class="toggle-button" type="button" aria-pressed="false">
+          FAVORITES ONLY: OFF
+        </button>
+
+        <button id="reset-stats" class="danger-button" type="button">
+          RESET
+        </button>
+
+        <div class="site-count" id="site-count" aria-live="polite">0 / 0</div>
+      </section>
+
+      <main>
+        <section class="board" aria-live="polite">
+          <div id="link-container" class="site-grid"></div>
+        </section>
+      </main>
+    </div>
   </div>
 
   <script type="module" src="./src/main.js"></script>

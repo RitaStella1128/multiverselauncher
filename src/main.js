@@ -34,36 +34,96 @@ function setFavoriteToggle(button, isEnabled) {
   button.textContent = `FAVORITES ONLY: ${isEnabled ? "ON" : "OFF"}`;
 }
 
-function matchesQuery(site, query) {
-  const normalized = String(query || "").trim().toLowerCase();
-  if (!normalized) {
-    return true;
-  }
-
-  const text = [
-    site.name,
-    site.url,
-    site.note,
-    site.category,
-    ...(site.keywords || [])
-  ]
-    .join(" ")
-    .toLowerCase();
-
-  return text.includes(normalized);
+function normalizeSearchText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFKC")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-function sortSites(sites, visits) {
+function getSiteCount(visits, siteId) {
+  const count = Number(visits[siteId]?.count || 0);
+  return Number.isFinite(count) ? count : 0;
+}
+
+function getSiteLastVisited(visits, siteId) {
+  const ts = Number(visits[siteId]?.lastVisitedAt || 0);
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function getMatchScore(site, normalizedQuery) {
+  if (!normalizedQuery) {
+    return 0;
+  }
+
+  const name = normalizeSearchText(site.name);
+  const host = normalizeSearchText(site.url);
+  const note = normalizeSearchText(site.note);
+  const category = normalizeSearchText(site.category);
+  const keywords = normalizeSearchText((site.keywords || []).join(" "));
+
+  let score = 0;
+  if (name === normalizedQuery) score += 1200;
+  if (name.startsWith(normalizedQuery)) score += 900;
+  if (name.includes(normalizedQuery)) score += 600;
+  if (host.includes(normalizedQuery)) score += 400;
+  if (keywords.includes(normalizedQuery)) score += 280;
+  if (note.includes(normalizedQuery)) score += 220;
+  if (category.includes(normalizedQuery)) score += 120;
+
+  return score;
+}
+
+function sortSites(sites, visits, normalizedQuery) {
   const countScore = (site) => {
-    const count = Number(visits[site.id]?.count || 0);
-    return Number.isFinite(count) ? count : 0;
+    return getSiteCount(visits, site.id);
   };
   const orderScore = (site) => (Number.isFinite(site.order) ? site.order : Number.MAX_SAFE_INTEGER);
   const byName = (a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  const recencyScore = (site) => getSiteLastVisited(visits, site.id);
+  const queryScore = (site) => getMatchScore(site, normalizedQuery);
 
   return [...sites].sort(
-    (a, b) => countScore(b) - countScore(a) || orderScore(a) - orderScore(b) || byName(a, b)
+    (a, b) =>
+      queryScore(b) - queryScore(a) ||
+      countScore(b) - countScore(a) ||
+      recencyScore(b) - recencyScore(a) ||
+      orderScore(a) - orderScore(b) ||
+      byName(a, b)
   );
+}
+
+function openSite(url, inNewTab) {
+  window.open(url, inNewTab ? "_blank" : "_self", "noopener");
+}
+
+function renderQuickLaunch(listElement, quickSites, openInNewTab, onVisit) {
+  if (!listElement) {
+    return;
+  }
+
+  listElement.innerHTML = "";
+  if (quickSites.length === 0) {
+    const empty = document.createElement("span");
+    empty.className = "quick-empty";
+    empty.textContent = "Open a site to build quick shortcuts.";
+    listElement.appendChild(empty);
+    return;
+  }
+
+  quickSites.forEach((site, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "quick-item";
+    button.textContent = `${index + 1}. ${site.name}`;
+    button.title = `${site.name} (${site.count} opens)`;
+    button.addEventListener("click", () => {
+      onVisit(site.id);
+      openSite(site.url, openInNewTab);
+    });
+    listElement.appendChild(button);
+  });
 }
 
 function isTypingContext(target) {
@@ -76,10 +136,20 @@ function isTypingContext(target) {
 
 async function initializeLauncher() {
   const searchInput = document.getElementById("site-search");
+  const searchClear = document.getElementById("search-clear");
   const favoriteToggle = document.getElementById("favorites-toggle");
+  const resetStats = document.getElementById("reset-stats");
   const siteCount = document.getElementById("site-count");
+  const quickList = document.getElementById("quick-list");
 
-  if (!searchInput || !favoriteToggle || !siteCount) {
+  if (
+    !searchInput ||
+    !searchClear ||
+    !favoriteToggle ||
+    !resetStats ||
+    !siteCount ||
+    !quickList
+  ) {
     return;
   }
 
@@ -129,14 +199,26 @@ async function initializeLauncher() {
     };
 
     const renderCurrent = () => {
-      let visible = config.sites.filter((site) => matchesQuery(site, state.query));
+      const normalizedQuery = normalizeSearchText(state.query);
+      let visible = config.sites;
+
+      if (normalizedQuery) {
+        visible = visible.filter((site) => getMatchScore(site, normalizedQuery) > 0);
+      }
 
       if (state.favoritesOnly) {
         visible = visible.filter((site) => state.favorites.has(site.id));
       }
 
-      const sorted = sortSites(visible, state.visits);
+      const sorted = sortSites(visible, state.visits, normalizedQuery);
       state.lastRendered = sorted;
+
+      const quickSites = sortSites(config.sites, state.visits, "")
+        .filter((site) => getSiteCount(state.visits, site.id) > 0)
+        .slice(0, 8)
+        .map((site) => ({ ...site, count: getSiteCount(state.visits, site.id) }));
+
+      renderQuickLaunch(quickList, quickSites, config.openInNewTabByDefault, onVisit);
 
       if (sorted.length === 0) {
         renderEmptyState("一致するサイトがありません。");
@@ -159,12 +241,21 @@ async function initializeLauncher() {
       renderCurrent();
     });
 
+    searchClear.addEventListener("click", () => {
+      if (searchInput.value) {
+        searchInput.value = "";
+        state.query = "";
+        renderCurrent();
+      }
+      searchInput.focus();
+    });
+
     searchInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && state.lastRendered.length > 0) {
         event.preventDefault();
         const topSite = state.lastRendered[0];
         onVisit(topSite.id);
-        window.open(topSite.url, config.openInNewTabByDefault ? "_blank" : "_self", "noopener");
+        openSite(topSite.url, config.openInNewTabByDefault);
       }
     });
 
@@ -175,14 +266,38 @@ async function initializeLauncher() {
       renderCurrent();
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (isTypingContext(event.target) && event.key !== "Escape") {
+    resetStats.addEventListener("click", () => {
+      const confirmed = window.confirm("Open counts and favorites will be reset. Continue?");
+      if (!confirmed) {
         return;
       }
 
+      state.visits = {};
+      state.favorites.clear();
+      state.favoritesOnly = false;
+      setFavoriteToggle(favoriteToggle, state.favoritesOnly);
+      persistState();
+      renderCurrent();
+    });
+
+    document.addEventListener("keydown", (event) => {
       const key = event.key.toLowerCase();
 
+      if (event.altKey && /^[1-9]$/.test(event.key)) {
+        const index = Number(event.key) - 1;
+        const site = state.lastRendered[index];
+        if (site) {
+          event.preventDefault();
+          onVisit(site.id);
+          openSite(site.url, config.openInNewTabByDefault);
+        }
+        return;
+      }
+
       if (event.key === "/") {
+        if (isTypingContext(event.target)) {
+          return;
+        }
         event.preventDefault();
         searchInput.focus();
         searchInput.select();
@@ -193,6 +308,10 @@ async function initializeLauncher() {
         event.preventDefault();
         searchInput.focus();
         searchInput.select();
+        return;
+      }
+
+      if (isTypingContext(event.target) && event.key !== "Escape") {
         return;
       }
 

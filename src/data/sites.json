@@ -24,7 +24,7 @@
       "id": "chatgpt-1",
       "name": "ChatGPT",
       "url": "https://chatgpt.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128",
+      "iconUrl": "https://www.edigitalagency.com.au/wp-content/uploads/new-ChatGPT-icon-white-png-large-size.png",
       "category": "ai",
       "note": "General-purpose AI assistant by OpenAI"
     },
@@ -32,7 +32,7 @@
       "id": "claude-2",
       "name": "Claude",
       "url": "https://claude.ai/new",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=claude.ai&sz=128",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Claude_AI_symbol.svg",
       "category": "ai",
       "note": "AI assistant by Anthropic"
     },
@@ -56,7 +56,7 @@
       "id": "deepseek-5",
       "name": "Deepseek",
       "url": "https://chat.deepseek.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=chat.deepseek.com&sz=128",
+      "iconUrl": "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/deepseek-color.png",
       "category": "ai",
       "note": "Reasoning-focused AI chat"
     },
@@ -64,7 +64,7 @@
       "id": "perplexity-6",
       "name": "Perplexity",
       "url": "https://www.perplexity.ai/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=www.perplexity.ai&sz=128",
+      "iconUrl": "https://framerusercontent.com/images/gcMkPKyj2RX8EOEja8A1GWvCb7E.jpg?width=2000&height=2000",
       "category": "ai",
       "note": "Answer engine with cited sources"
     },
@@ -72,7 +72,7 @@
       "id": "midjourney-7",
       "name": "Midjourney",
       "url": "https://www.midjourney.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=www.midjourney.com&sz=128",
+      "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy5UsG6m3IEAKxgGVQDp0rhvpqhC3ceBBQvA&s",
       "category": "ai",
       "note": "AI image generation platform"
     },
@@ -88,7 +88,7 @@
       "id": "manus-9",
       "name": "Manus",
       "url": "https://manus.im/app",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=manus.im&sz=128",
+      "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKe31sL7JyE1eZvLoZbYY_5_c-sSHdotRKA&s",
       "category": "ai",
       "note": "Autonomous AI agent workspace"
     },
@@ -96,7 +96,7 @@
       "id": "notebooklm-10",
       "name": "NotebookLM",
       "url": "https://notebooklm.google.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=128",
+      "iconUrl": "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/notebooklm.png",
       "category": "ai",
       "note": "AI notebook grounded on your sources"
     },
@@ -112,7 +112,7 @@
       "id": "ai-studio-12",
       "name": "AI Studio",
       "url": "https://aistudio.google.com/app/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/google-ai-studio.png",
       "category": "ai",
       "note": "Gemini API playground and tools"
     },
@@ -120,7 +120,7 @@
       "id": "github-13",
       "name": "GitHub",
       "url": "https://github.com/RitaStar1128?tab=repositories",
-      "iconUrl": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png",
+      "iconUrl": "https://img.icons8.com/ios11/512/FFFFFF/github.png",
       "category": "dev",
       "note": "Code hosting and collaboration"
     },
@@ -128,7 +128,7 @@
       "id": "codepen-14",
       "name": "CodePen",
       "url": "https://codepen.io/pen/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=codepen.io&sz=128",
+      "iconUrl": "https://blog.codepen.io/wp-content/uploads/2023/09/logo-white.png",
       "category": "dev",
       "note": "Frontend code playground"
     },
@@ -152,7 +152,7 @@
       "id": "supabase-17",
       "name": "Supabase",
       "url": "https://supabase.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=supabase.com&sz=128",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp",
       "category": "dev",
       "note": "Open source backend platform"
     },
@@ -160,7 +160,7 @@
       "id": "vercel-18",
       "name": "Vercel",
       "url": "https://vercel.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=vercel.com&sz=128",
+      "iconUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR214hUc7C8cf6uWQtakVuTFM0ZeUZ1Lec4iA&s",
       "category": "dev",
       "note": "Frontend hosting and deployment"
     },
@@ -264,7 +264,7 @@
       "id": "photos-31",
       "name": "Photos",
       "url": "https://photos.google.com/",
-      "iconUrl": "https://www.google.com/s2/favicons?domain=photos.google.com&sz=128",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Google_Photos_icon_%282020-2025%29.svg/3840px-Google_Photos_icon_%282020-2025%29.svg.png",
       "category": "life",
       "note": "Photo backup and organization"
     },
