@@ -35,6 +35,14 @@ function formatRelativeTime(timestamp) {
   return `${Math.floor(diffMs / day)}D AGO`;
 }
 
+function getIconCandidates(site) {
+  if (Array.isArray(site.iconCandidates) && site.iconCandidates.length > 0) {
+    return site.iconCandidates;
+  }
+
+  return site.iconUrl ? [site.iconUrl] : [];
+}
+
 function createSiteCard(site, options) {
   const { openInNewTab, favorites, visits, onToggleFavorite, onVisit } = options;
 
@@ -79,17 +87,27 @@ function createSiteCard(site, options) {
 
   const icon = document.createElement("img");
   icon.className = "site-icon";
-  icon.src = site.iconUrl;
   icon.alt = `${site.name} icon`;
   icon.loading = "lazy";
   icon.decoding = "async";
-  
+  const iconCandidates = getIconCandidates(site);
+  let iconCandidateIndex = 0;
+  icon.src = iconCandidates[iconCandidateIndex] || "";
+
   const iconFallback = document.createElement("span");
   iconFallback.className = "site-icon-fallback";
   iconFallback.textContent = site.name.slice(0, 1).toUpperCase();
   iconFallback.hidden = true;
 
   icon.addEventListener("error", () => {
+    iconCandidateIndex += 1;
+    const nextIcon = iconCandidates[iconCandidateIndex];
+
+    if (nextIcon) {
+      icon.src = nextIcon;
+      return;
+    }
+
     icon.hidden = true;
     iconFallback.hidden = false;
   });

@@ -305,6 +305,10 @@ input:focus,
   color: var(--ink-dim);
 }
 
+.site-icon-fallback[hidden] {
+  display: none;
+}
+
 .site-name {
   font-size: 0.98rem;
   font-weight: 700;

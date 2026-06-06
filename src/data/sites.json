@@ -4,8 +4,8 @@
   "openInNewTabByDefault": true,
   "_comment_1": "JSON does not support // comments. Use _comment_* fields for guidance.",
   "_comment_2": "You can add sites in any order. Default display uses array order when order is not set.",
-  "_comment_3": "Required keys per site: id, name, url, iconUrl. url/iconUrl must be absolute http(s).",
-  "_comment_4": "Optional keys: category, note, keywords(array), order(number). order takes priority over array order.",
+  "_comment_3": "Required keys per site: id, name, url. url must be absolute http(s).",
+  "_comment_4": "Optional keys: iconUrl, category, note, keywords(array), order(number). Known Google product sites try official refreshed icons first; iconUrl remains a custom fallback.",
   "_new_site_template": {
     "id": "example-site",
     "name": "Example",
